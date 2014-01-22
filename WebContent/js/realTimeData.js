@@ -1,5 +1,5 @@
-function realTimedata()
-			{
+function getRealTimeData(){
+			//realTimeData();
 					  	var xmlhttp;
 					 
 					 // document.getElementById("myDiv").innerHTML=hello;
@@ -25,7 +25,9 @@ function realTimedata()
 						    	document.getElementById("humidity3").innerHTML=jsonObject.s3_humidity.toFixed(1);
 						    	document.getElementById("als3").innerHTML=jsonObject.s3_als;
 					    	}
-					 	 }
+					 	 };
 						xmlhttp.open("GET","sensorData?operation=getData",true);
 						xmlhttp.send();
-			};
+						setTimeout(getRealTimeData,5000);
+						
+}
