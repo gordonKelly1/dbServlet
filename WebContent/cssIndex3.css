@@ -1,8 +1,9 @@
 @CHARSET "UTF-8";
 
-body{background-color:#424242;}
+body{background-color: #24243F;}
 div{
-	background-color:#424242;
+	background-color: #24243F;
+	
 }
 div.banner{
 	width: 100%;
@@ -12,30 +13,22 @@ div.banner{
 
 div.roomDiv{
 	width:100%;
-	outline;
+	/*
 	outline-style:solid;
-	 outline-color: #424242;
-	 outline-width:2px
+	outline-color: #424242;
+	 outline-width:2px;
+	 color:yellow;
+	 */
 }
 
 div.mainDisplay{
 	width:100%;
 	/*height:800px;*/
-	background-color:#424242;
+	background-color: 24243F;
 	float:left;
+	color:yellow;
 }
-/*
-div.roomDiv{
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-	border-left:15px solid;
-	border-top:15px solid;
-	border-right:15px solid;
-	border-bottom:15px solid;
-	border-color: black;
-}
-*/
+
 table.roomTable{
 	/*
 	-moz-border-radius: 6px;
@@ -46,35 +39,44 @@ table.roomTable{
 	border-right:15px solid;
 	border-bottom:15px solid;
 	border-color: black;
-	*/
+	
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
 	border-color:.#424242;
+	*/
+	height:280px
 }
 td.tdGui{
 	width:45%;
-	height:50px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	border-left:4px solid;
-	border-top:4px solid;
-	border-bottom:4px solid;
-	border-color:.#424242;
+	height:180px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border-left:8px solid;
+	border-top:8px solid;
+	border-bottom:8px solid;
+	border-color:#424242;
 }
 td.tdData{
 	width:35%;
 	height:50px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	border-right:4px solid;
-	border-top:4px solid;
-	border-bottom:4px solid;
-	border-color:.#424242;
+	
+	-moz-border-radius: 8px;
+	-webkit-border-radius-bottomright: 8px;
+	-webkit-border-radius-topright: 8px;
+	
+	
+	border-radius: 8px;
+	border-right:8px solid;
+	border-top:8px solid;
+	border-bottom:8px solid;
+	border-color:#424242;
 	
 }
 table
 {
-	border-collapse:collapse;
+	/*border-collapse:collapse;*/
 }
 tr{
 	border:1px solid white;
@@ -83,8 +85,75 @@ fieldset.dataField{
 	
 	 /*border-bottom: 5px solid #000000;*/
 	 height:95%;
-	 border: solid 1px white;
+	 border: solid 2px yellow;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
-	border-radius: 8px
+	border-radius: 8px;
 }
+
+#sliderLabel {
+    border: 1px solid black;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: block;
+    height: 18px;
+  /*  margin: 1px auto;*/
+    overflow: hidden;
+    position: relative;
+    width: 80px;
+}
+#sliderLabel input {
+    display: none;
+}
+#sliderLabel input:checked + #slider {
+    left: 36px;
+}
+#slider {
+    background: #c0c6c3;
+    -moz-border-radius: 1px;
+    display: block;
+    height: 18px;
+    left: -4px;
+    position: absolute;
+    top: 0px;
+    -moz-transition: left .25s ease-out;
+    -webkit-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+    width: 48px;
+    z-index: 1;
+}
+#sliderOn, #sliderOff {
+    color: white;
+    display: block;
+    font-family: verdana, arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 40px;
+}
+#sliderOn {
+    background: #002400;
+    background: -moz-linear-gradient(top,  #002400 0%, #008a00 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#002400), color-stop(100%,#008a00));
+    background: -webkit-linear-gradient(top,  #002400 0%,#008a00 100%);
+    background: -o-linear-gradient(top,  #002400 0%,#008a00 100%);
+    background: -ms-linear-gradient(top,  #002400 0%,#008a00 100%);
+    background: linear-gradient(top,  #002400 0%,#008a00 100%);
+    left: 0px;
+}
+#sliderOff {
+    background: #870000;
+    background: -moz-linear-gradient(top,  #870000 0%, #ff0000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#870000), color-stop(100%,#ff0000));
+    background: -webkit-linear-gradient(top,  #870000 0%,#ff0000 100%);
+    background: -o-linear-gradient(top,  #870000 0%,#ff0000 100%);
+    background: -ms-linear-gradient(top,  #870000 0%,#ff0000 100%);
+    background: linear-gradient(top,  #870000 0%,#ff0000 100%);
+    right: 0px;
+}
+
