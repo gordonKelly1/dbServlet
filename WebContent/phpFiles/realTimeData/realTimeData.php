@@ -30,61 +30,28 @@ if (mysqli_connect_errno())
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 $result = null;
-$result = mysqli_query($con,"select * from sensor1 order by entryID desc limit 1");
+$result = mysqli_query($con,"select * from current_data");
 $e = new Sensor2Data();
 // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
 while($row = mysqli_fetch_array($result))
 {
 	
-	$e->temp1 = $row[temp2];
-	$e->als1 = $row[als];
-	$e->humidity1 = $row[humidity];
-	$e->lighting_on1 = $row[lighting_on];
-	$e->heating_on1 = $row[heating_on];
-	//echo $row[temp2];
-	//echo "<br>";
+	$e->temp1 = $row[room1_temp];
+	$e->als1 = $row[room1_als];
+	$e->humidity1 = $row[room1_humidity];
+	$e->temp2 = $row[room2_temp];
+	$e->als2 = $row[room2_als];
+	$e->humidity2 = $row[room2_humidity];
+	$e->temp3 = $row[room3_temp];
+	$e->als3 = $row[room3_als];
+	$e->humidity3 = $row[room3_humidity];
+	$e->temp4 = $row[room4_temp];
+	$e->als4 = $row[room4_als];
+	$e->humidity4 = $row[room4_humidity];
+	
 }
-$result = mysqli_query($con,"select * from sensor2 order by entryID desc limit 1");
-// echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
-while($row = mysqli_fetch_array($result))
-{
 
-	$e->temp2 = $row[temp2];
-	$e->als2 = $row[als];
-	$e->humidity2 = $row[humidity];
-	$e->lighting_on2 = $row[lighting_on];
-	$e->heating_on2 = $row[heating_on];
-	//echo $row[temp2];
-	//echo "<br>";
-}
-$result = mysqli_query($con,"select * from sensor3 order by entryID desc limit 1");
-// echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
-while($row = mysqli_fetch_array($result))
-{
-
-	$e->temp3 = $row[temp2];
-	$e->als3 = $row[als];
-	$e->humidity3 = $row[humidity];
-	$e->lighting_on3 = $row[lighting_on];
-	$e->heating_on3 = $row[heating_on];
-	//echo $row[temp2];
-	//echo "<br>";
-}
 $result = mysqli_query($con,"select * from sensor4 order by entryID desc limit 1");
-//$e = new Sensor2Data();
-// echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
-while($row = mysqli_fetch_array($result))
-{
-
-	$e->temp4 = $row[temp2];
-	$e->als4 = $row[als];
-	$e->humidity4 = $row[humidity];
-	$e->lighting_on4 = $row[lighting_on];
-	$e->heating_on4 = $row[heating_on];
-	//echo $row[temp2];
-	//echo "<br>";
-}
-
 mysqli_close($con);
 $json_obj = json_encode($e);
 header('Content-Type: application/json');

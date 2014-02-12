@@ -17,13 +17,16 @@ function getRealTimeData(){
 						xmlhttp.onreadystatechange=function()
 					  	{
 						
+							
+							
 					  		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 					   		 {
 					  			//alert("xmlhttpResponse");
+					  			//alert(xmlhttp.responseText);
+					  			
 						  		var jsonObject = JSON.parse(xmlhttp.responseText);
 						  		//alert(xmlhttp.responseText);
-					  			//var jsonObject = xmlhttp.responseText;
-					  			//alert(jsonObject.temp);
+						  		
 						  		document.getElementById("temp1").innerHTML=parseFloat(jsonObject.temp1).toFixed(2);
 						    	document.getElementById("humidity1").innerHTML=parseFloat(jsonObject.humidity1).toFixed(2);
 						    	document.getElementById("als1").innerHTML=jsonObject.als1;
@@ -38,6 +41,7 @@ function getRealTimeData(){
 						    	document.getElementById("als4").innerHTML=jsonObject.als4;
 						    	
 					    	}
+					    	
 					 	 };
 						xmlhttp.open("GET","/phpFiles/realTimeData/realTimeData.php",true);
 						xmlhttp.send();
