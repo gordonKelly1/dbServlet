@@ -7,9 +7,9 @@ $("input").change(function() {
 	 
 	   if(element.indexOf("tempTreshold") == -1)  //do if element that caused event not tempTreshold
 	   {
-		   
-		    value = document.getElementById(element).value;
-		    value = $(this).is(":checked");
+		   alert("hello");
+		   // value = document.getElementById(element).value;
+		   value = $(this).is(":checked");
 			   
 			   
 			   var xmlhttp;
@@ -56,7 +56,7 @@ $("input").mouseup(function() {
 	   
 	 if(element.indexOf("tempTreshold") != -1){   //if element that caused event is a tempTreshold event
 		 value = document.getElementById(element).value;
-		 value = $(this).is(":checked");
+		
 		   
 		   alert("hello");
 		   var xmlhttp;

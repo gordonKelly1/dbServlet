@@ -12,13 +12,14 @@
  {
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  $result = mysqli_query($con,"SELECT temp2, heating_on,tstamp FROM sensor4 Where tstamp >= ".$epochMinus24." order by entryID asc limit 86400" );
+  $result = mysqli_query($con,"SELECT temp2, heating_on,tstamp, heating_limit FROM sensor4 Where tstamp >= ".$epochMinus24." order by entryID asc limit 86400" );
  // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
   while($row = mysqli_fetch_array($result))
   {
   	$dataTemp4[] = $row[temp2];
   	$dataOnOff4[] = $row[heating_on];
   	$tstamp4[]=$row[tstamp];
+  	$tempLimit4[] = $row[heating_limit];
   }
   
   mysqli_close($con);
@@ -34,10 +35,6 @@ function heating4() {
             text: 'Room Temperature Data',
             x: -20 //center
         },
-        subtitle: {
-            text: 'Red area heating on',
-            x: -20
-        },
         credits: {
             enabled: false
         },
@@ -45,7 +42,8 @@ function heating4() {
             type: 'datetime',
              maxZoom: 3600000, // fourteen days
         },
-        yAxis: {
+        yAxis: [{
+            min: 0,
             title: {
                 text: 'Temperature (°C)'
             },
@@ -55,9 +53,23 @@ function heating4() {
                 color: '#808080'
             }]
         },
-        tooltip: {
-            valueSuffix: '°C'
-        },
+        {
+        	max: 1,
+            min: 0,
+            tickLength: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                enabled: false
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        }],
+       
         legend: {
             layout: 'vertical',
             align: 'right',
@@ -78,6 +90,9 @@ function heating4() {
     },
         series: [ {
         name: 'Temp',
+        tooltip: {
+            valueSuffix: '°C'
+        },
         data: [<?php $element = 0;foreach($dataTemp4 as $val)
         {
         	{
@@ -89,12 +104,22 @@ function heating4() {
 		}?>]
     }, {
         name: 'Level',
-        data: []
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        data: [<?php $element = 0;foreach($tempLimit4 as $val)
+        {
+        	echo '['.($tstamp2[$element]*1000).',';
+			echo $val;
+			echo '],';
+        	$element = $element + 1;
+		}?>]
           
     },{
         name: 'on/off',
         type: 'area',
         color: '#FF0000',
+        yAxis: 1,
         fillOpacity: 0.5,
         data: [<?php $element = 0;foreach($dataOnOff4 as $val)
         {
