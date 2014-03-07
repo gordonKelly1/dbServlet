@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="cssIndex3.css">
+<title>Home auto</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="js/themes/dark-blue.js"></script>
+ <script type="text/javascript">
+function heating1() {
+    $('#containerSensor1').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        },
+        credits: {
+            enabled: false
+        },
+       title: {
+            text: 'Room Temperature Data',
+            x: -20 //center
+        },
+        xAxis: {
+            type: 'datetime',
+            maxZoom: 3600000, // fourteen days
+        },
+        yAxis: [{
+            min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        {
+        	
+            min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
+            tickLength: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                enabled: false
+            },
+            plotLines: [{
+                value: 0,
+                width: 0,
+                color: '#808080'
+            }]
+        }],
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+        series: [ {
+                 name: 'on/off',
+                 type: 'area',
+                 yAxis: 1,
+                 color: '#FF0000',
+                 fillOpacity: 0.5,
+                 data: []
+             }
+                 ,{
+        name: 'Temp',
+        yAxis: 1,
+       
+        
+        data: [],
+		 tooltip: {
+	            valueSuffix: '°C'
+	        },
+    }, {
+        name: 'Level',
+        yAxis: 0,
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        data: []
+          
+    }]
+    });
+   
+};
+
+</script>
+
+
+ <script type="text/javascript">
+function heating2() {
+    $('#containerSensor2').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        }, 
+         credits: {
+            enabled: false
+        },
+       title: {
+            text: 'Room Temperature Data',
+            x: -20 //center
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: [{
+            min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        {
+        	
+            min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
+            tickLength: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                enabled: false
+            },
+            plotLines: [{
+                value: 0,
+                width: 0,
+                color: '#808080'
+            }]
+        }],
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+    series: [ {
+        name: 'Temp',
+        yAxis: 0,
+       
+        
+        data: [],
+		 tooltip: {
+	            valueSuffix: '°C'
+	        },
+    }, {
+        name: 'Level',
+        yAxis: 0,
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        data: []
+          
+    },{
+        name: 'on/off',
+        type: 'area',
+        yAxis: 1,
+        color: '#FF0000',
+        fillOpacity: 0.5,
+        data: []
+    }]
+    });
+   
+};
+
+</script>
+
+
+ <script type="text/javascript">
+function heating3() {
+    $('#containerSensor3').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        }, 
+         credits: {
+            enabled: false
+        },
+       title: {
+            text: 'Room Temperature Data',
+            x: -20 //center
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: [{
+            min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        {
+        	
+            min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
+            tickLength: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                enabled: false
+            },
+            plotLines: [{
+                value: 0,
+                width: 0,
+                color: '#808080'
+            }]
+        }],
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+    series: [ {
+        name: 'Temp',
+        yAxis: 0,
+        
+        data: [],
+		 tooltip: {
+	            valueSuffix: '°C'
+	        },
+    }, {
+        name: 'Level',
+        yAxis: 0,
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        data: []
+          
+    },{
+        name: 'on/off',
+        type: 'area',
+        yAxis: 1,
+        color: '#FF0000',
+        fillOpacity: 0.5,
+        data: []
+    }]
+    });
+   
+};
+
+</script>
+
+
+ <script type="text/javascript">
+function heating4() {
+    $('#containerSensor4').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        },
+       title: {
+            text: 'Room Temperature Data',
+            x: -20 //center
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: [{
+            min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        {
+        	
+            min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
+            tickLength: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                enabled: false
+            },
+            plotLines: [{
+                value: 0,
+                width: 0,
+                color: '#808080'
+            }]
+        }],
+       
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+        series: [ {
+        name: 'Temp',
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        data: []
+    }, {
+        name: 'Level',
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        data: []
+          
+    },{
+        name: 'on/off',
+        type: 'area',
+        color: '#FF0000',
+        yAxis: 1,
+        fillOpacity: 0.5,
+        data: []
+    }]
+    });
+   
+};
+
+</script>
+
+
+<script type="text/javascript">
+function humidity1() {
+    $('#containerSensor1').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        },
+       title: {
+            text: 'Room Humidity Data',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '        ',
+            x: -20
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: {
+            title: {
+                text: 'Humidity %'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+        series: [ {
+        name: 'Humidity',
+        type: 'area',
+        data: []
+    }]
+    });
+   
+};
+
+</script><script type="text/javascript">
+function humidity2() {
+    $('#containerSensor2').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        },
+       title: {
+            text: 'Room Humidity Data',
+            x: -20 //center
+        },
+        subtitle: {
+           text: ' ',
+            x: -20
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: {
+            title: {
+                text: 'Humidity %'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+        series: [ {
+        	name: 'Humidity',
+            type: 'area',
+            data: []
+    }]
+    });
+   
+};
+
+</script><script type="text/javascript">
+function humidity3() {
+    $('#containerSensor3').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        },
+       title: {
+            text: 'Room Humidity Data',
+            x: -20 //center
+        },
+        subtitle: {
+          //  text: 'Red area heating on',
+            x: -20
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: {
+            title: {
+                text: 'Humidity %'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+        series: [ {
+				name: 'Humidity',
+				type: 'area',
+				data: []
+    }]
+    });
+   
+};
+
+</script><script type="text/javascript">
+function humidity4() {
+    $('#containerSensor4').highcharts({
+           chart: {
+        zoomType: 'x',
+        spacingRight: 20
+        },
+       title: {
+            text: 'Room Humidity Data',
+            x: -20 //center
+        },
+        subtitle: {
+          //  text: 'Red area heating on',
+            x: -20
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+             maxZoom: 3600000, // fourteen days
+        },
+        yAxis: {
+            title: {
+                text: 'Humidity %'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        plotOptions: {
+        series: {
+            marker: {
+                enabled: false,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+        series: [ {
+        	name: 'Humidity',
+            type: 'area',
+            data: []
+    }]
+    });
+   
+};
+
+</script><script type="text/javascript">
+
+function setSwStatus(){
+
+	document.getElementById("light1").checked = 0 ;
+	document.getElementById("heat1").checked = 0;
+	document.getElementById("light2").checked = 0 ;
+	document.getElementById("heat2").checked = 0;
+	document.getElementById("light3").checked = 0 ;
+	document.getElementById("heat3").checked = 0;
+	document.getElementById("light4").checked = 0 ;
+	document.getElementById("heat4").checked = 0;
+	document.getElementById("masterHeat").checked = 1;
+	document.getElementById("masterLight").checked = 0;
+	document.getElementById("rangevalue1").value = 18;
+	document.getElementById("rangevalue2").value = 18;
+	document.getElementById("rangevalue3").value = 25;
+	document.getElementById("rangevalue4").value = 18;
+	document.getElementById("tempTreshold1").value = 18;
+	document.getElementById("tempTreshold2").value = 18;
+	document.getElementById("tempTreshold3").value = 25;
+	document.getElementById("tempTreshold4").value = 18;
+	
+}
+</script><script src="js/realTimeData.js"></script>
+<script src="js/lightSwitching.js"></script>
+<script type="text/javascript">
+function onLoadFunctions(){
+
+	getRealTimeData();
+	displayHeating();
+	setSwStatus();
+};
+
+</script>
+<script>
+
+</script>
+<script type="text/javascript">
+function displayHeating(){
+	heating1();
+	heating2();
+	heating3();
+	heating4();
+	setTimeout(displayHumidity,15000);
+	
+};
+function displayHumidity(){
+	humidity1();
+	humidity2();
+	humidity3();
+	humidity4();
+	setTimeout(displayHeating,15000);
+	
+};
+
+</script>
+</head>
+<body onload = "onLoadFunctions();">
+	<div class = "banner">
+ 		<img src="logo.png" width="50%" align="middle">
+ </div>
+ <div  style = "width:100%,height:40px"></div>
+ <div class = "mainDisplay">
+ 	<table width="100%">
+ 		<tr class = "roomTable">
+ 			<td>
+ 				 <table style= width:100% >
+ 	 				<tr>
+ 	 					<td class = "tdGui"><div id ="containerSensor1" style="height:100%; width:100%; background-color:#232325"></div></td>
+ 	 					<td class = "tdData" width = "90%">
+ 	 						<fieldset class = "dataField">
+ 	   						    <legend style="color:yellow">Room 1</legend>
+ 	 							<table width="100%" height="171" border="0" cellpadding="0">
+         							 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											temp = 22;
+	 											document.write("Temperature     </td><td class = \"td2\" id = \"temp1\">"+ temp+"</td>");
+	 										 </script>
+        	  						 </tr>
+          	    					 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											humidity = 22;
+	 											document.write("Humidity    </td><td class = \"td2\" id = \"humidity1\">"+ humidity +"</td>");
+	 										 </script>
+         							 </tr>
+          							 <tr>
+            	 						 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											als = 22;
+	 											document.write("Lighting Level    </td><td class = \"td2\" id = \"als1\">"+ als +"</td>");
+	 										 </script>
+          							</tr>
+          							<tr>
+          								<td colspan = "4">
+          								 <div  style = "width:100%;height:2px;background-color:yellow;"></div>
+          								 </td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="light1"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+										
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="heat1"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+										<td><script type="text/javascript">document.write("Heat");</script></td>
+										<td><input type="range" min="10" max="30" value="0" step="1" onchange="rangevalue1.value=value" id="tempTreshold1"/>
+											<span class="highlight"></span></td>
+										<td><output id="rangevalue1">50</output></td>
+         							 </tr>
+        						</table>
+        					 </fieldset>
+      					  </td>
+ 	 				<td class = "tdMenu">
+ 	 					<fieldset class = "menuField">
+ 	   						    <legend style="color:yellow; width:100%; text-align:center;"><pre>Historical Data</pre></legend>
+ 	 							<table style = "border-spacing:10px; width:100%">
+ 	 								<tr>
+ 	 									<td width = "40%"></td>
+ 	 									<td class = "button" >
+ 	 										<form action="./room1HistoricalData.php" >
+                                               <input type="submit" value="    Room 1     " >
+                                            </form>
+                                         </td>
+                                         <td width = "100%"></td>
+ 	 								</tr>
+ 	 								<tr>
+ 	 									<td width = "10%"></td>
+ 	 									<td class = "button" >
+ 	 										<form action="./room2HistoricalData.php" >
+                                               <input type="submit" value="    Room 2     ">
+                                            </form>
+                                         </td>
+ 	 								</tr>
+ 	 								<tr>
+ 	 									<td width = "10%"></td>
+ 	 									<td class = "button" >
+ 	 										<form action="./room3HistoricalData.php">
+                                               <input type="submit" value="    Room 3     " >
+                                            </form>
+                                         </td>
+ 	 								</tr>
+ 	 								<tr>
+ 	 									<td width = "10%"></td>
+ 	 									<td class = "button" width="50px">
+ 	 										<form action="./room4HistoricalData.php" >
+                                               <input type="submit" value="    Room 4     " >
+                                            </form>
+                                         </td>
+ 	 								</tr>
+ 	 								
+ 	 								
+ 	 							</table>
+ 	 					</fieldset>
+ 	 					
+ 	 				</td>
+ 	 			</tr>
+ 			 </table>
+ 		   </td>
+ 		</tr>
+ 	    <tr class = "roomTable">
+ 		   <td>
+ 			 <table style="width:100%">
+ 	 			<tr>
+ 	 				<td class = "tdGui"><div id ="containerSensor2" style="height:100%; width:100%; background-color:#232325"></div></td>
+ 	 				<td class = "tdData" width = "90%">
+ 	 					<fieldset class = "dataField">
+ 	   						 <legend style="color:yellow">Room 1</legend>
+ 	 						 <table width="100%" height="171" border="0" cellpadding="0">
+         							 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											temp = 22;
+	 											document.write("Temperature</td><td class = \"td2\" id = \"temp2\">"+ temp+"</td>");
+	 										 </script>
+        	  						 </tr>
+          	    					 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											humidity = 22;
+	 											document.write("Humidity</td><td class = \"td2\" id = \"humidity2\">"+ humidity +"</td>");
+	 										 </script>
+         							 </tr>
+          							 <tr>
+            	 						 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											als = 22;
+	 											document.write("Lighting Level</td><td class = \"td2\"id = \"als2\">"+ als +"</td>");
+	 										 </script>
+          							</tr>
+          							<tr>
+          								<td colspan = "4">
+          								 <div  style = "width:100%;height:2px;background-color:yellow;"></div>
+          								 </td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="light2"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="heat2"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+										<td><script type="text/javascript">document.write("Heat");</script></td>
+										<td><input type="range" min="10" max="30" value="0" step="1" onchange="rangevalue2.value=value" id="tempTreshold2"/>
+											<span class="highlight"></span></td>
+										<td><output id="rangevalue2">50</output></td>
+         							 </tr>
+        						</table>
+				         </fieldset>
+				       </td>
+ 	 				<td class = "tdMenu" id = "tdMenu">
+ 	 				<fieldset class = "menuField">
+ 	   						    <legend style="color:yellow; width:100%; text-align:center;"><pre>  Master Switches</pre></legend>
+ 	 							<table style = "border-spacing:10px;width:100%;">
+ 	 								<tr >
+ 	 									
+ 	 									<td class = "masterButton" align="center" >
+ 	 									<fieldset class = "menuField" >
+ 	   										 <legend style="color:yellow; text-align:center;"><pre>Heating</pre></legend>
+ 	   										 	<label id="sliderLabel">
+										  			  <input type="checkbox" id="masterHeat" style = "float: center;"/>
+										  				  <span id="slider"></span>
+										  				  <span id="sliderOn">On</span>
+										   					 <span id="sliderOff">Off</span>
+													</label>
+ 	   										 
+ 	   									</fieldset>
+ 	 									</td>
+ 	 									
+ 	 								</tr>
+ 	 								<tr>
+ 	 									
+ 	 									<td class = "masterButton" align="center">
+ 	 									<fieldset class = "menuField">
+ 	   										 <legend style="color:yellow; text-align:center;"><pre>Lighting</pre></legend>
+ 	   										 	<label id="sliderLabel">
+										  			  <input type="checkbox" id="masterLight"/>
+										  				  <span id="slider"></span>
+										  				  <span id="sliderOn">On</span>
+										   					 <span id="sliderOff">Off</span>
+													</label>
+ 	   										 
+ 	   									</fieldset>
+ 	 									</td>
+ 	 								
+ 	 									
+ 	 								</tr>
+ 	 								<tr>
+ 	 									
+ 	 									
+ 	 								</tr>
+ 	 								
+ 	 								
+ 	 							</table>
+ 	 					</fieldset>
+ 	 					
+ 	 				</td>
+ 	 			</tr>
+ 			 </table>
+ 		  </td>
+ 		</tr>
+ 		<tr class = "roomTable">
+ 		 <td>
+ 			 <table style="width:100%">
+ 	 			<tr>
+ 	 				<td class = "tdGui"><div id ="containerSensor3" style="height:100%; width:100%; background-color:#232325"></div></td>
+ 	 				<td class = "tdData" width = "90%">
+ 	 					<fieldset class = "dataField">
+ 	   						 <legend style="color:yellow">Room 1</legend>
+ 	 						 <table width="100%" height="171" border="0" cellpadding="0">
+         							 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											temp = 22;
+	 											document.write("Temperature</td><td class = \"td2\"id = \"temp3\">"+ temp+"</td>");
+	 										 </script>
+        	  						 </tr>
+          	    					 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											humidity = 22;
+	 											document.write("Humidity</td><td class = \"td2\" id = \"humidity3\">"+ humidity +"</td>");
+	 										 </script>
+         							 </tr>
+          							 <tr>
+            	 						 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											als = 22;
+	 											document.write("Lighting Level</td><td class = \"td2\"id = \"als3\">"+ als +"</td>");
+	 										 </script>
+          							</tr>
+          							<tr>
+          								<td colspan = "4">
+          								 <div  style = "width:100%;height:2px;background-color:yellow;"></div>
+          								 </td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="light3"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="heat3"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+										<td><script type="text/javascript">document.write("Heat");</script></td>
+										<td><input type="range" min="10" max="30" value="0" step="1" onchange="rangevalue3.value=value" id="tempTreshold3"/>
+											<span class="highlight"></span></td>
+										<td>	<output id="rangevalue3">50</output></td>
+         							 </tr>
+        						</table>
+				         </fieldset>
+				       </td>
+ 	 				<td class = "tdMenu">tdmenu</td>
+ 	 			</tr>
+ 			 </table>
+ 		  </td>
+ 		</tr>
+ 		<tr class = "roomTable">
+ 		  <td>
+ 			 <table style="width:100%">
+ 	 			<tr>
+ 	   				
+ 	 				<td class = "tdGui"><div id ="containerSensor4" style="height:100%; width:100%; background-color:#232325"></div></td>
+ 	 				<td class = "tdData" width = "90%">
+ 	 					<fieldset class = "dataField">
+ 	   						 <legend style="color:yellow">Room 1</legend>
+ 	 						 <table width="100%" height="171" border="0" cellpadding="0">
+         							 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											temp = 22;
+	 											document.write("Temperature</td><td class = \"td2\" id = \"temp4\">"+ temp+"</td>");
+	 										 </script>
+        	  						 </tr>
+          	    					 <tr>
+           								 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											humidity = 22;
+	 											document.write("Humidity</td><td class = \"td2\" id = \"humidity4\">"+ humidity +"</td>");
+	 										 </script>
+         							 </tr>
+          							 <tr>
+            	 						 <td width="60%" colspan="3">
+           									 <script type="text/javascript">
+	 											als = 22;
+	 											document.write("Lighting Level</td><td class = \"td2\" id = \"als4\">"+ als +"</td>");
+	 										 </script>
+          							</tr>
+          							<tr>
+          								<td colspan = "4">
+          								 <div  style = "width:100%;height:2px;background-color:yellow;"></div>
+          								 </td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="light4"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+          							</tr>
+          							<tr>
+           								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
+           								 <td><label id="sliderLabel">
+										    <input type="checkbox" id="heat4"/>
+										    <span id="slider"></span>
+										    <span id="sliderOn">On</span>
+										    <span id="sliderOff">Off</span>
+										</label></td>
+										<td><script type="text/javascript">document.write("Heat");</script></td>
+										<td><input type="range" min="10" max="30" value="0" step="1" onchange="rangevalue4.value=value" id="tempTreshold4"/>
+											<span class="highlight"></span></td>
+										,td>	<output id="rangevalue4">50</output></td>
+         							 </tr>
+        						</table>
+				         </fieldset>
+				       </td>
+ 	 				<td class = "tdMenu">tdmenu</td>
+ 	 			</tr>
+ 			 </table>
+ 		  </td>
+ 		</tr>
+ 	</table>
+ </div>
+</body>
+</html>

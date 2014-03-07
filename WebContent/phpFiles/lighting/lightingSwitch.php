@@ -1,4 +1,6 @@
 <?php
+//this php file takes a connection from the js file lightswitch.js connects to the python main program and sends string 
+//of which button was pressed and where its new value
 class Sensor2Data{
 	public $element ="";
 	public $value = "";

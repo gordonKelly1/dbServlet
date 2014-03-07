@@ -3,7 +3,7 @@
  $date = new DateTime();
  $epoch = $date->getTimestamp();
  $epochMinus24 = $epoch - (3600*24);
- 
+
  
  $con=mysqli_connect("localhost","root","miltown1","db1");
 
@@ -12,31 +12,34 @@
  {
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  $result = mysqli_query($con,"SELECT temp2, heating_on,tstamp, heating_limit FROM sensor3 Where tstamp >= ".$epochMinus24." order by entryID asc limit 86400" );
+  $result = mysqli_query($con,"SELECT temp2, heating_on, tstamp, heating_limit FROM sensor3 Where tstamp >= ".$epochMinus24." order by entryID asc limit 86400" );
  // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
   while($row = mysqli_fetch_array($result))
   {
+  	
   	$dataTemp3[] = $row[temp2];
   	$dataOnOff3[] = $row[heating_on];
   	$tstamp3[]=$row[tstamp];
   	$tempLimit3[] = $row[heating_limit];
+  	
   }
   
   mysqli_close($con);
 ?>
 <script type="text/javascript">
 function heating3() {
-    $('#containerSensor3').highcharts({
+	chart3A = new Highcharts.Chart({
            chart: {
+      	renderTo: 'containerSensor3A',
         zoomType: 'x',
         spacingRight: 20
+        }, 
+         credits: {
+            enabled: false
         },
        title: {
             text: 'Room Temperature Data',
             x: -20 //center
-        },
-        credits: {
-            enabled: false
         },
         xAxis: {
             type: 'datetime',
@@ -44,6 +47,9 @@ function heating3() {
         },
         yAxis: [{
             min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
             title: {
                 text: 'Temperature (°C)'
             },
@@ -54,8 +60,11 @@ function heating3() {
             }]
         },
         {
-        	max: 1,
+        	
             min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
             tickLength: 0,
             title: {
                 text: ''
@@ -65,7 +74,7 @@ function heating3() {
             },
             plotLines: [{
                 value: 0,
-                width: 1,
+                width: 0,
                 color: '#808080'
             }]
         }],
@@ -87,22 +96,23 @@ function heating3() {
             }
         }
     },
-        series: [ {
+    series: [ {
         name: 'Temp',
-        tooltip: {
-            valueSuffix: '°C'
-        },
+        yAxis: 0,
+        
         data: [<?php $element = 0;foreach($dataTemp3 as $val)
         {
-        	{
-        		echo '['.($tstamp3[$element]*1000).',';
-        		printf("%.1f",$val);
-        		echo '],';
-        		$element = $element + 1;
-        	}
-		}?>]
+        	echo '['.($tstamp2[$element]*1000).',';
+			printf("%.1f",$val);
+			echo '],';
+        	$element = $element + 1;
+		}?>],
+		 tooltip: {
+	            valueSuffix: '°C'
+	        },
     }, {
         name: 'Level',
+        yAxis: 0,
         tooltip: {
             valueSuffix: '°C'
         },
@@ -122,7 +132,7 @@ function heating3() {
         fillOpacity: 0.5,
         data: [<?php $element = 0;foreach($dataOnOff3 as $val)
         {
-        	echo '['.($tstamp3[$element]*1000).','.$val.'],';
+        	echo '['.($tstamp2[$element]*1000).','.$val.'],';
         	$element = $element + 1;
 		}?>]
     }]

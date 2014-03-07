@@ -26,8 +26,9 @@
 ?>
 <script type="text/javascript">
 function heating4() {
-    $('#containerSensor4').highcharts({
+	chart4A = new Highcharts.Chart({
            chart: {
+        renderTo: 'containerSensor4A',
         zoomType: 'x',
         spacingRight: 20
         },
@@ -44,6 +45,9 @@ function heating4() {
         },
         yAxis: [{
             min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
             title: {
                 text: 'Temperature (°C)'
             },
@@ -54,8 +58,11 @@ function heating4() {
             }]
         },
         {
-        	max: 1,
+        	
             min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
             tickLength: 0,
             title: {
                 text: ''
@@ -65,7 +72,7 @@ function heating4() {
             },
             plotLines: [{
                 value: 0,
-                width: 1,
+                width: 0,
                 color: '#808080'
             }]
         }],

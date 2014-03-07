@@ -50,8 +50,6 @@ while($row = mysqli_fetch_array($result))
 	$e->humidity4 = $row[room4_humidity];
 	
 }
-
-$result = mysqli_query($con,"select * from sensor4 order by entryID desc limit 1");
 mysqli_close($con);
 $json_obj = json_encode($e);
 header('Content-Type: application/json');

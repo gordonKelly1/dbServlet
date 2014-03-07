@@ -30,26 +30,27 @@ div.mainDisplay{
 }
 
 table.roomTable{
-	/*
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-	border-left:15px solid;
-	border-top:15px solid;
-	border-right:15px solid;
-	border-bottom:15px solid;
-	border-color: black;
-	
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-	border-color:.#424242;
-	*/
 	height:280px
 }
+
+table.hisRoomTable{
+	height:280px
+}
+
 td.tdGui{
 	width:45%;
 	height:180px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border-left:8px solid;
+	border-top:8px solid;
+	border-bottom:8px solid;
+	border-color:#424242;
+}
+td.hisTdGui{
+	width:65%;
+	height:280px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
@@ -74,12 +75,30 @@ td.tdData{
 	border-color:#424242;
 	
 }
+td.button{
+	border:5px solid #424242;
+	margin: 10px;
+	width:25%;
+}
+td.masterButton{
+	/*border:5px solid;*/
+	margin: 10px;
+}
 table
 {
 	/*border-collapse:collapse;*/
 }
 tr{
 	border:1px solid white;
+}
+
+td div {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    top:   0px;
+    right: 0px;
+    z-index: 500;
 }
 fieldset.dataField{
 	
@@ -89,6 +108,16 @@ fieldset.dataField{
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+}
+fieldset.menuField{
+	
+	 /*border-bottom: 5px solid #000000;*/
+	 height:95%;
+	 border: solid 0px yellow;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	float: center;
 }
 #rangevalue {
 	color: white;

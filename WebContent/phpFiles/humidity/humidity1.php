@@ -25,8 +25,9 @@
 ?>
 <script type="text/javascript">
 function humidity1() {
-    $('#containerSensor1').highcharts({
+	chart1B = new Highcharts.Chart({
            chart: {
+       	renderTo: 'containerSensor1B',
         zoomType: 'x',
         spacingRight: 20
         },

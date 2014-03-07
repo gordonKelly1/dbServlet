@@ -26,8 +26,9 @@
 ?>
 <script type="text/javascript">
 function heating1() {
-    $('#containerSensor1').highcharts({
+   chart1A = new Highcharts.Chart({
            chart: {
+        renderTo: 'containerSensor1A',
         zoomType: 'x',
         spacingRight: 20
         },
@@ -44,6 +45,9 @@ function heating1() {
         },
         yAxis: [{
             min: 0,
+            max: 35,
+            endOnTick:false,
+            tickInterval: 10,
             title: {
                 text: 'Temperature (°C)'
             },
@@ -54,8 +58,11 @@ function heating1() {
             }]
         },
         {
-        	max: 1,
+        	
             min: 0,
+            max: 1,
+            endOnTick:false,
+            tickInterval: .25,
             tickLength: 0,
             title: {
                 text: ''
@@ -88,7 +95,20 @@ function heating1() {
         }
     },
         series: [ {
+                 name: 'on/off',
+                 type: 'area',
+                 yAxis: 1,
+                 color: '#FF0000',
+                 fillOpacity: 0.5,
+                 data: [<?php $element = 0;foreach($dataOnOff1 as $val)
+                 {
+                 	echo '['.($tstamp1[$element]*1000).','.$val.'],';
+                 	$element = $element + 1;
+         		}?>]
+             }
+                 ,{
         name: 'Temp',
+        yAxis: 1,
        
         
         data: [<?php $element = 0;foreach($dataTemp1 as $val)
@@ -103,6 +123,7 @@ function heating1() {
 	        },
     }, {
         name: 'Level',
+        yAxis: 0,
         tooltip: {
             valueSuffix: '°C'
         },
@@ -114,17 +135,6 @@ function heating1() {
         	$element = $element + 1;
 		}?>]
           
-    },{
-        name: 'on/off',
-        type: 'area',
-        yAxis: 1,
-        color: '#FF0000',
-        fillOpacity: 0.5,
-        data: [<?php $element = 0;foreach($dataOnOff1 as $val)
-        {
-        	echo '['.($tstamp1[$element]*1000).','.$val.'],';
-        	$element = $element + 1;
-		}?>]
     }]
     });
    
