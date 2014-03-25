@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" />
+<title>Insert title here</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function() {
+
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
+        // Create the chart
+        $('#container').highcharts('StockChart', {
+            
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : 'AAPL Stock Price'
+            },
+            
+            series : [{
+                name : 'AAPL',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+            
+        }, function(chart){
+
+            // apply the date pickers
+            setTimeout(function () {
+                $('input.highcharts-range-selector', $(chart.container).parent())
+                    .datepicker();
+            }, 0);
+        });
+    });
+    
+    
+    // Set the datepicker's date format
+    $.datepicker.setDefaults({
+        dateFormat: 'yy-mm-dd',
+        onSelect: function(dateText) {
+            this.onchange();
+            this.onblur();
+        }
+    });
+
+});
+
+</script>
+</head>
+<body>
+<div id="container" style="height: 400px; min-width: 600px"></div>
+</body>
+</html>

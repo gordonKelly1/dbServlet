@@ -10,19 +10,21 @@
 <script src="js/themes/dark-blue.js"></script>
 <script type="text/javascript">var chartA;var divDisplayVari = 0; </script>
 <?PHP
-	include("phpFiles/heating/heating1.php");
-	include("phpFiles/heating/heating2.php");
-	include("phpFiles/heating/heating3.php");
-	include("phpFiles/heating/heating4.php");
+	include("js/updateData.php");
+	for($var = 1;$var <5; $var++)
+	{ 
+		$room_num = $var;
+		include("phpFiles/heating/heating1.php");
+	}
 	include("phpFiles/humidity/humidity1.php");
 	include("phpFiles/humidity/humidity2.php");
 	include("phpFiles/humidity/humidity3.php");
 	include("phpFiles/humidity/humidity4.php");
     include("phpFiles/sw_status_dbQuery.php");
+	
 ?>
 <script src="js/realTimeData.js"></script>
 <script src="js/lightSwitching.js"></script>
-<script src="js/newData.js"></script>
 <script type="text/javascript">
 function onLoadFunctions(){
 
@@ -40,6 +42,9 @@ function onLoadFunctions(){
 <script type="text/javascript">
 function displayHeating(){
 	heating1();
+	heating2();
+	heating3();
+	heating4();
 	humidity1();
 	heating2();
 	humidity2();
@@ -48,7 +53,6 @@ function displayHeating(){
 	humidity3();
 	humidity4();
 	changeDiv();
-	setTimeout(displayHumidity,15000);
 	
 };
 function displayHumidity(){
@@ -365,7 +369,8 @@ function displayHumidity(){
         						</table>
 				         </fieldset>
 				       </td>
- 	 				<td class = "tdMenu">tdmenu</td>
+ 	 				<td class = "tdMenu" id = "div1">
+ 	 				</td>
  	 			</tr>
  			 </table>
  		  </td>

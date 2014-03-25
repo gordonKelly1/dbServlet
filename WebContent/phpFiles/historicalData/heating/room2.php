@@ -25,7 +25,7 @@
   mysqli_close($con);
 ?>
 <script type="text/javascript">
-function heating1() {
+function heating1(){
     $('#roomHeating').highcharts({
            chart: {
         zoomType: 'x',

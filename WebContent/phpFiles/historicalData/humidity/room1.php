@@ -25,8 +25,9 @@
 ?>
 <script type="text/javascript">
 function humidity1() {
-    $('#roomHumidity').highcharts({
+	chart1B = new Highcharts.Chart({
            chart: {
+       	renderTo: 'roomHumidity',
         zoomType: 'x',
         spacingRight: 20
         },

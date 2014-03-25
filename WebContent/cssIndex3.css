@@ -20,6 +20,10 @@ div.roomDiv{
 	 color:yellow;
 	 */
 }
+div.datePickerUI{
+	
+	 z-index: 1!important;
+}
 
 div.mainDisplay{
 	width:100%;
@@ -35,6 +39,11 @@ table.roomTable{
 
 table.hisRoomTable{
 	height:280px
+}
+table.historicalTable{
+	width: 100%; 
+	padding:20px;
+	
 }
 
 td.tdGui{
