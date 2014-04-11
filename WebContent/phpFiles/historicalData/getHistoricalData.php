@@ -7,7 +7,7 @@ class Prices{
 $e = new Prices();
 $from = $_GET['from'];
 $to = $_GET['to'];
-
+$room_num = $_GET['room_num'];
 $fromTstamp = strtotime($from);
 $toTstamp = strtotime($to);
 
@@ -15,13 +15,15 @@ $toTstamp = strtotime($to);
 $humidity_Json = array();
 $tempLimit_Json = array();
 $onOff_Json = array();
+$lighting_on_Json = array();
+$als_json = array();
 
 $con=mysqli_connect("localhost","root","miltown1","db1");
 if (mysqli_connect_errno())
 {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$result = mysqli_query($con,"SELECT temp2, heating_on, tstamp, heating_limit, humidity FROM sensor1 where tstamp >".$fromTstamp." and tstamp < ".$toTstamp);
+$result = mysqli_query($con,"SELECT temp2, heating_on, tstamp, heating_limit, humidity, light_on, als FROM sensor".$room_num." where tstamp >".$fromTstamp." and tstamp < ".$toTstamp);
 
 while($row = mysqli_fetch_array($result))
 {
@@ -29,6 +31,8 @@ while($row = mysqli_fetch_array($result))
 	$humidity_Json[$row[tstamp]]=$row[humidity];
 	$onOff_Json[$row[tstamp]]=$row[heating_on];
 	$tempLimit_Json[$row[tstamp]]=$row[heating_limit];
+	$lighting_on_Json[$row[tstamp]]=$row[light_on];
+	$als_Json[$row[tstamp]]=$row[als];
 	
 }
 
@@ -36,6 +40,8 @@ $array[] = json_encode($temp_Json);
 $array[] = json_encode($tempLimit_Json);
 $array[] = json_encode($onOff_Json);
 $array[] = json_encode($humidity_Json);
+$array[] = json_encode($lighting_on_Json);
+$array[] = json_encode($als_Json);
 
 $result = mysqli_query($con,"SELECT electricityPrice, oilPrice FROM info");
 while($row = mysqli_fetch_array($result))

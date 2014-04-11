@@ -51,7 +51,6 @@ function requestData() {
 		  		
 		  		//alert(dataPointArray.toString());
 		  		var series = chart1A.series[0];
-		  		console.log(chart1A.series[0]);
 		  		shift = series.data.length > 20000; // shift if the series is 
 	                                                 // longer than 20
 		  		<?php 
@@ -66,6 +65,10 @@ function requestData() {
 			  		chart".$i."A.series[2].addPoint(dataPointArray, true, true);";
 			  		echo "dataPointArray[1] =	parseFloat(jsonArrays[".($i-1)."].humidity);
 			  		chart".$i."B.series[0].addPoint(dataPointArray, true, true);";
+			  		echo "dataPointArray[1] =	parseFloat(jsonArrays[".($i-1)."].lighting_on);
+			  		chart".$i."C.series[0].addPoint(dataPointArray, true, true);";
+			  		echo "dataPointArray[1] =	parseFloat(jsonArrays[".($i-1)."].als);
+			  		chart".$i."C.series[1].addPoint(dataPointArray, true, true);";
 			  	    //echo " ";
 		  		}
 		  		?>
@@ -83,15 +86,19 @@ function changeDiv() {
 		
 	document.getElementById("containerSensor1A").style.zIndex = 0;
 	document.getElementById("containerSensor1B").style.zIndex = 1;
+	document.getElementById("containerSensor1C").style.zIndex = 0;
 	document.getElementById("containerSensor2A").style.zIndex = 0;
 	document.getElementById("containerSensor2B").style.zIndex = 1;
+	document.getElementById("containerSensor2C").style.zIndex = 0;
 	document.getElementById("containerSensor3A").style.zIndex = 0;
 	document.getElementById("containerSensor3B").style.zIndex = 1;
+	document.getElementById("containerSensor3C").style.zIndex = 0;
 	document.getElementById("containerSensor4A").style.zIndex = 0;
 	document.getElementById("containerSensor4B").style.zIndex = 1;
+	document.getElementById("containerSensor4C").style.zIndex = 0;
 	divDisplayVari++;
 	}
-	else{
+	else if(divDisplayVari == 1) {
 		document.getElementById("containerSensor1A").style.zIndex = 1;
 		document.getElementById("containerSensor1B").style.zIndex = 0;
 		document.getElementById("containerSensor2A").style.zIndex = 1;
@@ -100,8 +107,21 @@ function changeDiv() {
 		document.getElementById("containerSensor3B").style.zIndex = 0;
 		document.getElementById("containerSensor4A").style.zIndex = 1;
 		document.getElementById("containerSensor4B").style.zIndex = 0;
-		divDisplayVari=0;
+		divDisplayVari++;
 	}
+	else{
+
+		document.getElementById("containerSensor1A").style.zIndex = 0;
+		document.getElementById("containerSensor1C").style.zIndex = 1;
+		document.getElementById("containerSensor2A").style.zIndex = 0;
+		document.getElementById("containerSensor2C").style.zIndex = 1;
+		document.getElementById("containerSensor3A").style.zIndex = 0;
+		document.getElementById("containerSensor3C").style.zIndex = 1;
+		document.getElementById("containerSensor4A").style.zIndex = 0;
+		document.getElementById("containerSensor4C").style.zIndex = 1;
+		divDisplayVari=0
+	}
+		
 	
 	setTimeout(changeDiv, 15000);  
 }

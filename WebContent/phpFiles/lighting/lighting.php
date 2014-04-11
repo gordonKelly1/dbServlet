@@ -13,23 +13,22 @@
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-  $result = mysqli_query($con,"SELECT temp2, heating_on, tstamp, heating_limit FROM sensor".$room_num." Where tstamp >= ".$epochMinus24." order by entryID asc limit 86400" );
+  $result = mysqli_query($con,"SELECT als, light_on, tstamp FROM sensor".$room_num." Where tstamp >= ".$epochMinus24." order by entryID asc limit 86400" );
  // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
   while($row = mysqli_fetch_array($result))
   {
-  	${"dataTemp".$room_num}[] = $row[temp2];
-  	${"dataOnOff".$room_num}[] = $row[heating_on];
+  	${"als".$room_num}[] = $row[als];
+  	${"light_on".$room_num}[] = $row[light_on];
   	${"tstamp".$room_num}[]=$row[tstamp];
-  	${"tempLimit".$room_num}[] = $row[heating_limit];
   }
   
   mysqli_close($con);
 ?>
 <script type="text/javascript">
-function <?php echo " heating".$room_num;?>() {
-	<?php echo " chart".$room_num."A";?> = new Highcharts.Chart({
+function <?php echo " lighting".$room_num;?>() {
+	<?php echo " chart".$room_num."C";?> = new Highcharts.Chart({
            chart: {
-        renderTo: <?php echo "'containerSensor".$room_num."A'";?>,
+        renderTo: <?php echo "'containerSensor".$room_num."C'";?>,
         zoomType: 'x',
         spacingRight: 20
         },
@@ -37,7 +36,7 @@ function <?php echo " heating".$room_num;?>() {
             enabled: false
         },
        title: {
-            text: 'Room Temperature Data',
+            text: 'Room Lighting Data',
             x: -20 //center
         },
         xAxis: {
@@ -46,11 +45,11 @@ function <?php echo " heating".$room_num;?>() {
         },
         yAxis: [{
             min: 0,
-            max: 35,
+            max: 100,
             endOnTick:false,
-            tickInterval: 10,
+            tickInterval: 25,
             title: {
-                text: 'Temperature (°C)'
+                text: 'Ambient light level'
             },
             plotLines: [{
                 value: 0,
@@ -101,39 +100,25 @@ function <?php echo " heating".$room_num;?>() {
                  yAxis: 1,
                  color: '#FF0000',
                  fillOpacity: 0.5,
-                 data: [<?php $element = 0;foreach(${"dataOnOff".$room_num} as $val)
+                 data: [<?php $element = 0;foreach(${"light_on".$room_num} as $val)
                  {
                  	echo '['.(${"tstamp".$room_num}[$element]*1000).','.$val.'],';
                  	$element = $element + 1;
          		}?>]
              }
                  ,{
-        name: 'Temp',
+        name: 'lums',
         yAxis: 0,
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: ' '
         },  
-        data: [<?php $element = 0;foreach(${"dataTemp".$room_num} as $val)
+        data: [<?php $element = 0;foreach(${"als".$room_num} as $val)
         {
         	echo '['.(${"tstamp".$room_num}[$element]*1000).',';
 			printf("%.1f",$val);
 			echo '],';
         	$element = $element + 1;
 		}?>],
-    }, {
-        name: 'Level',
-        yAxis: 0,
-        tooltip: {
-            valueSuffix: '°C'
-        },
-        data: [<?php $element = 0;foreach(${"tempLimit".$room_num} as $val)
-        {
-        	echo '['.(${"tstamp".$room_num}[$element]*1000).',';
-			echo $val;
-			echo '],';
-        	$element = $element + 1;
-		}?>]
-          
     }]
     });
    

@@ -15,6 +15,7 @@
 	{ 
 		$room_num = $var;
 		include("phpFiles/heating/heating1.php");
+		include("phpFiles/lighting/lighting.php");
 	}
 	include("phpFiles/humidity/humidity1.php");
 	include("phpFiles/humidity/humidity2.php");
@@ -46,12 +47,13 @@ function displayHeating(){
 	heating3();
 	heating4();
 	humidity1();
-	heating2();
 	humidity2();
-	heating3();
-	heating4();
 	humidity3();
 	humidity4();
+	lighting1();
+	lighting2();
+	lighting3();
+	lighting4();
 	changeDiv();
 	
 };
@@ -147,8 +149,8 @@ function displayHumidity(){
  	 								<tr>
  	 									<td width = "40%"></td>
  	 									<td class = "button" >
- 	 										<form action="./room1HistoricalData.php" >
-                                               <input type="submit" value="    Room 1     " >
+ 	 										<form action="./room1HistoricalData.php" method = "post">
+                                               <input type="submit" name = "room_num" value="    Room 1     " >
                                             </form>
                                          </td>
                                          <td width = "100%"></td>
@@ -156,24 +158,24 @@ function displayHumidity(){
  	 								<tr>
  	 									<td width = "10%"></td>
  	 									<td class = "button" >
- 	 										<form action="./room2HistoricalData.php" >
-                                               <input type="submit" value="    Room 2     ">
+ 	 										<form action="./room1HistoricalData.php" method = "post">
+                                               <input type="submit" name = "room_num" value="    Room 2     ">
                                             </form>
                                          </td>
  	 								</tr>
  	 								<tr>
  	 									<td width = "10%"></td>
  	 									<td class = "button" >
- 	 										<form action="./room3HistoricalData.php">
-                                               <input type="submit" value="    Room 3     " >
+ 	 										<form action="./room1HistoricalData.php" method = "post">
+                                               <input type="submit"  name = "room_num" value="    Room 3     " >
                                             </form>
                                          </td>
  	 								</tr>
  	 								<tr>
  	 									<td width = "10%"></td>
  	 									<td class = "button" width="50px">
- 	 										<form action="./room4HistoricalData.php" >
-                                               <input type="submit" value="    Room 4     " >
+ 	 										<form action="./room1HistoricalData.php" method = "post">
+                                               <input type="submit" name = "room_num" value="    Room 4     " >
                                             </form>
                                          </td>
  	 								</tr>
@@ -200,7 +202,7 @@ function displayHumidity(){
  	 				</td>
  	 				<td class = "tdData" width = "90%">
  	 					<fieldset class = "dataField">
- 	   						 <legend style="color:yellow">Room 1</legend>
+ 	   						 <legend style="color:yellow">Room 2</legend>
  	 						 <table width="100%" height="171" border="0" cellpadding="0">
          							 <tr>
            								 <td width="60%" colspan="3">
@@ -316,7 +318,7 @@ function displayHumidity(){
  	 						</div>	</td>
  	 				<td class = "tdData" width = "90%">
  	 					<fieldset class = "dataField">
- 	   						 <legend style="color:yellow">Room 1</legend>
+ 	   						 <legend style="color:yellow">Room 3</legend>
  	 						 <table width="100%" height="171" border="0" cellpadding="0">
          							 <tr>
            								 <td width="60%" colspan="3">
@@ -388,7 +390,7 @@ function displayHumidity(){
  	 						</div></td>
  	 				<td class = "tdData" width = "90%">
  	 					<fieldset class = "dataField">
- 	   						 <legend style="color:yellow">Room 1</legend>
+ 	   						 <legend style="color:yellow">Room 4</legend>
  	 						 <table width="100%" height="171" border="0" cellpadding="0">
          							 <tr>
            								 <td width="60%" colspan="3">
@@ -441,7 +443,7 @@ function displayHumidity(){
         						</table>
 				         </fieldset>
 				       </td>
- 	 				<td class = "tdMenu">tdmenu</td>
+ 	 				<td class = "tdMenu"></td>
  	 			</tr>
  			 </table>
  		  </td>

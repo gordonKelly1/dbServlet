@@ -13,12 +13,12 @@
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
   $result = null;
-  $result = mysqli_query($con,"SELECT humidity, tstamp FROM sensor1 order by entryID" );
+  $result = mysqli_query($con,"SELECT humidity, tstamp FROM sensor".$room_num." order by entryID asc limit 864" );
  // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
   while($row = mysqli_fetch_array($result))
   {
   	$dataHumidity1[] = $row[humidity];
-  	$tstamp1[]=$row[tstamp];
+  	$tstamp2[]=$row[tstamp];
   }
   
   mysqli_close($con);
@@ -36,7 +36,7 @@ function humidity1() {
             x: -20 //center
         },
         subtitle: {
-            text: '        ',
+            text: ' e ',
             x: -20
         },
         credits: {
@@ -82,7 +82,7 @@ function humidity1() {
         type: 'area',
         data: [<?php $element = 0;foreach($dataHumidity1 as $val)
         {
-        	echo '['.($tstamp1[$element]*1000).',';
+        	echo '['.($tstamp2[$element]*1000).',';
 			printf("%.1f",$val);
 			echo '],';
         	$element = $element + 1;

@@ -30,7 +30,7 @@ if (mysqli_connect_errno())
 		{
 			
 			$e->room_num = $i;
-			$e->temp = $row[temp1];
+			$e->temp = $row[temp2];
 			$e->tempLevel = $row[heating_limit];
 			$e->heating_currently_on = $row[heating_on];
 			$e->humidity = $row[humidity];

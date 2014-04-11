@@ -1,4 +1,8 @@
-
+<?php 
+$room_num = htmlspecialchars($_POST['room_num']);
+$len = strlen($room_num);
+$room_num = $room_num{9};
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +17,14 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="js/themes/dark-blue.js"></script>
+<script type="text/javascript">
+var room_num =  <?PHP
+		echo $room_num.";";?>
+</script>
 <?PHP
 include("phpFiles/historicalData/heating/room1.php");
 include("phpFiles/historicalData/humidity/room1.php");
+include("phpFiles/historicalData/lighting/room1.php");
 include("js/getHistoricalData.php")
 ?>
  
@@ -45,6 +54,7 @@ include("js/getHistoricalData.php")
 function onLoadFunctions(){
 	heating1();
 	humidity1();
+	lighting1();
 	 $("#tableStats").hide();
 }
 </script>
@@ -112,6 +122,12 @@ function onLoadFunctions(){
   		</tr>
   		<tr class="hisRoonTable">
   			<td style="width: 20%"></td>
+  			<td class = "hisTdGui"><div id ="roomLighting" style="height:100%; width:100%; background-color:#232325"></div></td>
+  			<td style="width: 20%">
+  			</td>
+  		</tr>
+  		<tr class="hisRoonTable">
+  			<td style="width: 20%"></td>
   			<td >
   				<div style = "width: 100%;" id = "tableStats">
   					<fieldset class = "dataField" style="color:yellow; valign:center">
@@ -135,6 +151,7 @@ function onLoadFunctions(){
   							<td><font size="3">Lighting</font></td>
   							<td id="lightingOnPeriod"></td>
   							<td id="lightingOffPeriod"></td>
+  							<td id="lightingTotal"></td>
   							<td id="lightingCost"></td>
   						</tr>
   					</table>
