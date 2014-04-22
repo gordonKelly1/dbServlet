@@ -18,9 +18,17 @@ $room_num = $room_num{9};
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="js/themes/dark-blue.js"></script>
 <script type="text/javascript">
+function change(color) { 
+	var el=event.srcElement;
+		 event.srcElement.style.backgroundColor=color;
+}</script>
+<script type="text/javascript">
 var room_num =  <?PHP
 		echo $room_num.";";?>
+var heatingOn;
+var lightingOn;
 </script>
+<script src="js/getUsageData.js"></script>
 <?PHP
 include("phpFiles/historicalData/heating/room1.php");
 include("phpFiles/historicalData/humidity/room1.php");
@@ -31,6 +39,7 @@ include("js/getHistoricalData.php")
    <script>
   $(function() {
     $( "#from" ).datepicker({
+      dateFormat: 'dd-mm-yy',
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
@@ -39,6 +48,7 @@ include("js/getHistoricalData.php")
       }
     });
     $( "#to" ).datepicker({
+      dateFormat: 'dd-mm-yy',
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
@@ -55,7 +65,8 @@ function onLoadFunctions(){
 	heating1();
 	humidity1();
 	lighting1();
-	 $("#tableStats").hide();
+	getUsageData();
+	// $("#tableStats").hide();
 }
 </script>
 
@@ -67,8 +78,8 @@ function onLoadFunctions(){
  		<img src="logo.png" width="50%" align="middle">
  </div>
  <div  style = "width:100%;height:40px;color:yellow"  >
-	<form action="homePage.php" style="color:yellow;background-color: #24243F">
-    <input type="submit" value="Home Page" style="color:yellow;background-color: #24243F">
+	<form action="homePage.php" style="color:yellow;background-color: #24243F" >
+    <input type="submit" value="Home Page" style="color:yellow;background-color: #24243F" onmouseover="change('#333399')" onmouseout="change('#24243F')">
 	</form>
  </div>
  <div class = "mainDisplay">
@@ -100,7 +111,7 @@ function onLoadFunctions(){
 				</tr>
 				<tr align="center">
 				 	<td colspan ="2" >
-						<INPUT TYPE="button" NAME="button" Value="View Data" onClick="getHistoricalData(this.form)" style="color:yellow;background-color: #24243F">
+						<INPUT onmouseover="change('#333399')" onmouseout="change('#24243F')" TYPE="button" NAME="button" Value="View Data" onClick="getHistoricalData(this.form)" style="color:yellow;background-color: #24243F">
 					</td>
 				</tr>
 				<tr  align="center">
@@ -131,13 +142,13 @@ function onLoadFunctions(){
   			<td >
   				<div style = "width: 100%;" id = "tableStats">
   					<fieldset class = "dataField" style="color:yellow; valign:center">
-  					<legend style="color:yellow; valign:center"><h2>Room Statistics</h2></legend>
+  					<legend style="color:yellow; valign:center"><h2>Room Statistics For Graphed Data</h2></legend>
   					<table class="historicalTable">
   						<tr style = "width: 100%;">
   							<td style = "width: 20%; height:10px;"></td>
   							<td ><font size="3">On</font></td>
   							<td ><font size="3">Off</font></td>
-  							<td ><font size="3">Total</font></td>
+  							<td ><font size="3">Total On Time</font></td>
   							<td ><font size="3">Predicted Cost</font></td>
   						</tr>
   						<tr>

@@ -45,7 +45,7 @@ function <?php echo " lighting".$room_num;?>() {
         },
         yAxis: [{
             min: 0,
-            max: 100,
+            max: 125,
             endOnTick:false,
             tickInterval: 25,
             title: {

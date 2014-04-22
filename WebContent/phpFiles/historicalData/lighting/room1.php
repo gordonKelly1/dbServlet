@@ -2,8 +2,8 @@
 // Create connection
  $date = new DateTime();
  $epoch = $date->getTimestamp();
- $epochMinus24 = $epoch - (3600*24);
- 
+ $epochMinus1W = $epoch - (3600*24*7);
+ $lighting_on = 0;
  
  $con=mysqli_connect("localhost","root","miltown1","db1");
 
@@ -13,19 +13,25 @@
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-  $result = mysqli_query($con,"SELECT als, light_on, tstamp FROM sensor".$room_num." order by entryID asc limit 864");
+  $result = mysqli_query($con,"SELECT als, light_on, tstamp FROM sensor".$room_num." where entryID % 10 = 0 and tstamp > $epochMinus1W" );
 
   while($row = mysqli_fetch_array($result))
   {
   	$als1[] = $row[als];
   	$light_on1[] = $row[light_on];
   	$tstamp3[]=$row[tstamp];
+  	
+  	if($row[light_on])
+  	{
+  		$lighting_on++;
+  	}
   }
   
   mysqli_close($con);
 ?>
 <script type="text/javascript">
 function lighting1() {
+	lightingOn = <?php echo $lighting_on; ?>;
 	chart1C = new Highcharts.Chart({
            chart: {
         renderTo: 'roomLighting',
@@ -36,7 +42,7 @@ function lighting1() {
             enabled: false
         },
        title: {
-            text: 'Room Lighting Data',
+            text: 'Room <?php echo $room_num; ?> Lighting Data',
             x: -20 //center
         },
         xAxis: {
@@ -45,7 +51,7 @@ function lighting1() {
         },
         yAxis: [{
             min: 0,
-            max: 100,
+            max: 125,
             endOnTick:false,
             tickInterval: 25,
             title: {

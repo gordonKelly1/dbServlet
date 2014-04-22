@@ -2,7 +2,7 @@
 // Create connection
  $date = new DateTime();
  $epoch = $date->getTimestamp();
- $epochMinus24 = $epoch - (3600*24);
+ $epochMinus1W = $epoch - (3600*24*7);
  
  
  $con=mysqli_connect("localhost","root","miltown1","db1");
@@ -13,7 +13,7 @@
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
   $result = null;
-  $result = mysqli_query($con,"SELECT humidity, tstamp FROM sensor".$room_num." order by entryID asc limit 864" );
+  $result = mysqli_query($con,"SELECT humidity, tstamp FROM sensor".$room_num." where entryID % 10 = 0 and tstamp > $epochMinus1W" );
  // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
   while($row = mysqli_fetch_array($result))
   {
@@ -32,11 +32,11 @@ function humidity1() {
         spacingRight: 20
         },
        title: {
-            text: 'Room Humidity Data',
+            text: 'Room <?php echo $room_num; ?> Humidity Data',
             x: -20 //center
         },
         subtitle: {
-            text: ' e ',
+            text: ' ',
             x: -20
         },
         credits: {

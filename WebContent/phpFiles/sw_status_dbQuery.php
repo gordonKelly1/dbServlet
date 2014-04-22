@@ -43,14 +43,14 @@
 
 function setSwStatus(){
 
-	document.getElementById("light1").checked = <?php echo $room1_lightSw_on ?> ;
-	document.getElementById("heat1").checked = <?php echo $room1_heatSw_on?>;
-	document.getElementById("light2").checked = <?php echo $room2_lightSw_on ?> ;
-	document.getElementById("heat2").checked = <?php echo $room2_heatSw_on?>;
-	document.getElementById("light3").checked = <?php echo $room3_lightSw_on ?> ;
-	document.getElementById("heat3").checked = <?php echo $room3_heatSw_on?>;
-	document.getElementById("light4").checked = <?php echo $room4_lightSw_on ?> ;
-	document.getElementById("heat4").checked = <?php echo $room4_heatSw_on?>;
+	document.getElementById("light0").checked = <?php echo $room1_lightSw_on ?> ;
+	document.getElementById("heat0").checked = <?php echo $room1_heatSw_on?>;
+	document.getElementById("light1").checked = <?php echo $room2_lightSw_on ?> ;
+	document.getElementById("heat1").checked = <?php echo $room2_heatSw_on?>;
+	document.getElementById("light2").checked = <?php echo $room3_lightSw_on ?> ;
+	document.getElementById("heat2").checked = <?php echo $room3_heatSw_on?>;
+	document.getElementById("light3").checked = <?php echo $room4_lightSw_on ?> ;
+	document.getElementById("heat3").checked = <?php echo $room4_heatSw_on?>;
 	document.getElementById("masterHeat").checked = <?php echo $masterHeatSw?>;
 	document.getElementById("masterLight").checked = <?php echo $masterLightSw?>;
 	document.getElementById("rangevalue1").value = <?php echo $room1_heating_limit?>;
@@ -61,6 +61,6 @@ function setSwStatus(){
 	document.getElementById("tempTreshold2").value = <?php echo $room2_heating_limit?>;
 	document.getElementById("tempTreshold3").value = <?php echo $room3_heating_limit?>;
 	document.getElementById("tempTreshold4").value = <?php echo $room4_heating_limit?>;
-	
+
 }
 </script>

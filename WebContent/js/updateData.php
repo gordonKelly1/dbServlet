@@ -57,17 +57,17 @@ function requestData() {
 		  		
 		  		for($i = 1; $i <5;$i++)
 		  		{ 
-			  	    echo "dataPointArray[1] = parseFloat(jsonArrays[".($i-1)."].heating_currently_on);
+			  	    echo "dataPointArray[1] = parseFloat(parseFloat(jsonArrays[".($i-1)."].heating_currently_on).toFixed(2));
 			  		chart".$i."A.series[0].addPoint(dataPointArray, true, true);";
-			  	    echo "dataPointArray[1] = parseFloat(jsonArrays[".($i-1)."].temp);
+			  	    echo "dataPointArray[1] = parseFloat(parseFloat(jsonArrays[".($i-1)."].temp).toFixed(2));
 			  		chart".$i."A.series[1].addPoint(dataPointArray, true, true);";
-			  		echo "dataPointArray[1] = parseFloat(jsonArrays[".($i-1)."].tempLevel);
+			  		echo "dataPointArray[1] =parseFloat(parseFloat(jsonArrays[".($i-1)."].tempLevel).toFixed(2));
 			  		chart".$i."A.series[2].addPoint(dataPointArray, true, true);";
-			  		echo "dataPointArray[1] =	parseFloat(jsonArrays[".($i-1)."].humidity);
+			  		echo "dataPointArray[1] =	parseFloat(parseFloat(jsonArrays[".($i-1)."].humidity).toFixed(2));
 			  		chart".$i."B.series[0].addPoint(dataPointArray, true, true);";
-			  		echo "dataPointArray[1] =	parseFloat(jsonArrays[".($i-1)."].lighting_on);
+			  		echo "dataPointArray[1] =	parseFloat(parseFloat(jsonArrays[".($i-1)."].lighting_on).toFixed(2));
 			  		chart".$i."C.series[0].addPoint(dataPointArray, true, true);";
-			  		echo "dataPointArray[1] =	parseFloat(jsonArrays[".($i-1)."].als);
+			  		echo "dataPointArray[1] =	parseFloat(parseFloat(jsonArrays[".($i-1)."].als).toFixed(2));
 			  		chart".$i."C.series[1].addPoint(dataPointArray, true, true);";
 			  	    //echo " ";
 		  		}

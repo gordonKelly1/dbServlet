@@ -2,8 +2,8 @@
 // Create connection
  $date = new DateTime();
  $epoch = $date->getTimestamp();
- $epochMinus24 = $epoch - (3600*24);
- 
+ $epochMinus1W = $epoch - (3600*24*7);
+ $heating_on = 0;
  
  $con=mysqli_connect("localhost","root","miltown1","db1");
 
@@ -12,7 +12,7 @@
  {
  	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  $result = mysqli_query($con,"SELECT temp2, heating_on, tstamp, heating_limit FROM sensor".$room_num." FROM sensor1 where entryID % 10 = 0" );
+  $result = mysqli_query($con,"SELECT temp2, heating_on, tstamp, heating_limit FROM sensor".$room_num." where entryID % 10 = 0 and tstamp > $epochMinus1W" );
  // echo mysqli_query($con,"SELECT * FROM sensor2 Where tstamp <= ".$epochMinus24." order by entryID desc limit 86400" );
   while($row = mysqli_fetch_array($result))
   {
@@ -20,12 +20,17 @@
   	$dataOnOff1[] = $row[heating_on];
   	$tstamp1[]=$row[tstamp];
   	$tempLimit1[] = $row[heating_limit];
+  	if($row[heating_on])
+  	{
+  		$heating_on++;
+  	}
   }
   
   mysqli_close($con);
 ?>
 <script type="text/javascript">
 function heating1() {
+	heatingOn = <?php echo "".$heating_on; ?>;
 	chart1A = new Highcharts.Chart({
            chart: {
         renderTo: 'roomHeating',
@@ -36,7 +41,7 @@ function heating1() {
             enabled: false
         },
        title: {
-            text: 'Room Temperature Data',
+            text: 'Room <?php echo $room_num; ?> Temperature Data',
             x: -20 //center
         },
         xAxis: {

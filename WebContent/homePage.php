@@ -8,6 +8,12 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="js/themes/dark-blue.js"></script>
+<script type="text/javascript">
+function change(color,textcolor) { 
+	var el=event.srcElement;
+		 event.srcElement.style.backgroundColor=color;
+		 event.srcElement.style.color = textcolor;
+}</script>
 <script type="text/javascript">var chartA;var divDisplayVari = 0; </script>
 <?PHP
 	include("js/updateData.php");
@@ -26,9 +32,11 @@
 ?>
 <script src="js/realTimeData.js"></script>
 <script src="js/lightSwitching.js"></script>
+<script src="js/querySwStatusAjax.js"></script>
 <script type="text/javascript">
 function onLoadFunctions(){
 
+	setInterval(getSwStatusAjax,5000);
 	getRealTimeData();
 	displayHeating();
 	setSwStatus();
@@ -119,8 +127,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="light1"/>
-										    <span id="slider"></span>
+										    <input type="checkbox" id="light0" /> <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
 										</label></td>
@@ -129,7 +136,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="heat1"/>
+										    <input type="checkbox" id="heat0"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
@@ -149,8 +156,8 @@ function displayHumidity(){
  	 								<tr>
  	 									<td width = "40%"></td>
  	 									<td class = "button" >
- 	 										<form action="./room1HistoricalData.php" method = "post">
-                                               <input type="submit" name = "room_num" value="    Room 1     " >
+ 	 										<form target="_blank" action="./room1HistoricalData.php" method = "post">
+                                               <input onmouseover="change('#24243F','yellow')" onmouseout="change('#ffffff','#000000')" type="submit" name = "room_num" value="    Room 1     " >
                                             </form>
                                          </td>
                                          <td width = "100%"></td>
@@ -158,24 +165,24 @@ function displayHumidity(){
  	 								<tr>
  	 									<td width = "10%"></td>
  	 									<td class = "button" >
- 	 										<form action="./room1HistoricalData.php" method = "post">
-                                               <input type="submit" name = "room_num" value="    Room 2     ">
+ 	 										<form target="_blank" action="./room1HistoricalData.php" method = "post">
+                                               <input onmouseover="change('#24243F','yellow')" onmouseout="change('#ffffff','#000000')" type="submit" name = "room_num" value="    Room 2     ">
                                             </form>
                                          </td>
  	 								</tr>
  	 								<tr>
  	 									<td width = "10%"></td>
  	 									<td class = "button" >
- 	 										<form action="./room1HistoricalData.php" method = "post">
-                                               <input type="submit"  name = "room_num" value="    Room 3     " >
+ 	 										<form target="_blank" action="./room1HistoricalData.php" method = "post">
+                                               <input onmouseover="change('#24243F','yellow')" onmouseout="change('#ffffff','#000000')" type="submit"  name = "room_num" value="    Room 3     " >
                                             </form>
                                          </td>
  	 								</tr>
  	 								<tr>
  	 									<td width = "10%"></td>
  	 									<td class = "button" width="50px">
- 	 										<form action="./room1HistoricalData.php" method = "post">
-                                               <input type="submit" name = "room_num" value="    Room 4     " >
+ 	 										<form target="_blank" action="./room1HistoricalData.php" method = "post">
+                                               <input onmouseover="change('#24243F','yellow')" onmouseout="change('#ffffff','#000000')" type="submit" name = "room_num" value="    Room 4     " >
                                             </form>
                                          </td>
  	 								</tr>
@@ -233,7 +240,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="light2"/>
+										    <input type="checkbox" id="light1"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
@@ -242,7 +249,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="heat2"/>
+										    <input type="checkbox" id="heat1"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
@@ -349,7 +356,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="light3"/>
+										    <input type="checkbox" id="light2"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
@@ -358,7 +365,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="heat3"/>
+										    <input type="checkbox" id="heat2"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
@@ -372,6 +379,20 @@ function displayHumidity(){
 				         </fieldset>
 				       </td>
  	 				<td class = "tdMenu" id = "div1">
+ 	 					<fieldset class = "menuField">
+ 	   						    <legend style="color:yellow; width:100%; text-align:center;"><pre> Schedule Control</pre></legend>
+ 	 							<table style = "border-spacing:10px; width:100%">
+ 	 								<tr>
+ 	 									<td width = "40%"></td>
+ 	 									<td class = "button" >
+ 	 										<form target="_blank" action="schedule.php" method = "post">
+                                               <input onmouseover="change('#24243F','yellow')" onmouseout="change('#ffffff','#000000')" type="submit" name = "room_num" value="    GO      " >
+                                            </form>
+                                         </td>
+                                         <td width = "50%"></td>
+                                     </tr>
+ 	 							</table>
+ 	 						</fieldset>
  	 				</td>
  	 			</tr>
  			 </table>
@@ -421,7 +442,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Lighting ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="light4"/>
+										    <input type="checkbox" id="light3"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
@@ -430,7 +451,7 @@ function displayHumidity(){
           							<tr>
            								 <td> <script type="text/javascript">document.write("\t  Heating ");</script></td>
            								 <td><label id="sliderLabel">
-										    <input type="checkbox" id="heat4"/>
+										    <input type="checkbox" id="heat3"/>
 										    <span id="slider"></span>
 										    <span id="sliderOn">On</span>
 										    <span id="sliderOff">Off</span>
